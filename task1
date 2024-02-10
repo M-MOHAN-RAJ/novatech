@@ -1,1 +1,72 @@
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int score = 0;      // Defining initially Score is Zero
+        while (true) {
+            System.out.println("Select an option:");
+            System.out.println("1.Start Quiz");
+            System.out.println("2.Exit Quiz");
+            int option = scanner.nextInt();
+            
+            if (option == 1) {
+                score = startQuiz(scanner);
+                System.out.println("Your final score is : " + score+"/10");
+            } else if (option == 2) {
+                System.out.println("Exited from Quiz...");
+                break;
+            } else {
+                System.out.println("Invalid option. Please try again.");
+            }
+        }
+
+    }
+    
+    public static int startQuiz(Scanner scanner) {
+        int score = 0;
+        //Here i am Defining questions and answers
+        String[] questions = {
+            "1.What is the capital of India?",
+            "2.Sachin Tendulkar is a?",
+            "3.Who wrote 'Romeo and Juliet'?",
+            "4.What is the national animal of India?",
+            "5.Which famous festival celebrated in Tamil Nadu is also known as the 'Festival of Harvest'?",
+            "6.What is the largest mammal in the world?",
+            "7.What is the boiling point of water in Celsius?",
+            "8.Who painted the Mona Lisa?",
+            "9.Which hill station in Tamil Nadu is popularly referred to as the 'Queen of Hill Stations'?",
+            "10.What is the tallest mountain in the world?"
+        };
+        String[] options = {
+            "A. Tamilnadu\nB. New Delhi\nC. Mumbai",
+            "A. Football player\nB. Hockey player\nC. Cricketer",
+            "A. William Shakespeare\nB. Jane Austen\nC. Charles Dickens",
+            "A. Tiger\nB. Elephant\nC. Lion",
+            "A. Pongal\nB. Diwali\nC. Navratri",
+            "A. Elephant\nB. Blue Whale\nC. Giraffe",
+            "A. 100°C\nB. 0°C\nC. 50°C",
+            "A. Leonardo da Vinci\nB. Michelangelo\nC. Pablo Picasso",
+            "A. Ooty\nB. Kodaikanal\nC. Yercaud",
+            "A. Mount Kilimanjaro\nB. Mount Everest\nC. Mount Fuji"
+        };
+        char[] answers = {'B', 'C', 'A', 'A', 'A', 'B', 'A', 'A', 'A', 'B'};
+        
+        // Display and process questions
+        for (int i = 0; i < questions.length; i++) {
+            System.out.println(questions[i]);
+            System.out.println(options[i]);
+            System.out.print("Your answer: ");
+            char userAnswer = Character.toUpperCase(scanner.next().charAt(0));
+            // Here i have used toUpperCase method ,which can convert user A,B,C options to UpperCase
+            // Even if they are entered in Lowercase letters            
+            if (userAnswer == answers[i]) {
+                System.out.println("Correct!\n");
+                score++;
+            } else {
+                System.out.println("Incorrect!\n");
+            }
+        }
+        return score;
+    }
+}
 
